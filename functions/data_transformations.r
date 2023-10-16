@@ -18,3 +18,14 @@ transform_metadata_to_df <- function(metadata){
 
 
 
+
+# Creating a function to_iso8610
+
+to_iso8610 <- function(datetime, offset){
+  date <- datetime + days(offset)
+  timeformat <- iso8601(date)
+  timeformat_with_z <- paste(timeformat, "Z", sep = "")
+  return(timeformat_with_z)
+}
+
+
