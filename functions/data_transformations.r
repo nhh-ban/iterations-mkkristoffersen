@@ -21,11 +21,24 @@ transform_metadata_to_df <- function(metadata){
 
 # Creating a function to_iso8610
 
-to_iso8610 <- function(datetime, offset){
+to_iso8601 <- function(datetime, offset){
   date <- datetime + days(offset)
   timeformat <- iso8601(date)
   timeformat_with_z <- paste(timeformat, "Z", sep = "")
   return(timeformat_with_z)
 }
 
+
+
+# transform_volumes()
+
+transform_volumes <- function(df){
+  create_df <- as.data.frame(matrix(unlist(df$trafficData$volume$byHour$edges), ncol = 3, byrow = TRUE))
+  colnames(create_df) <- c("from","to","volume")
+  correct_specification <- create_df %>% 
+    mutate(from = as_datetime(from, tz = "UTC"),
+           to = as_datetime(to, tz = "UTC"),
+           volume = as.numeric(volume))
+  return(correct_specification)
+}
 

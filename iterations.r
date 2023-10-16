@@ -9,7 +9,7 @@ library(lubridate)
 library(anytime)
 library(readr)
 library(yaml)
-
+library(glue)
 #### 1: Beginning of script
 
 # Load function for posting GQL-queries and retrieving data: 
