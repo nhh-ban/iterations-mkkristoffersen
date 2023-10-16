@@ -1,5 +1,5 @@
 
-# Creating a function
+# Creating a function for transforming metadata to a dataframe
 
 
 transform_metadata_to_df <- function(metadata){
