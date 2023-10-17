@@ -5,6 +5,9 @@
 # All tests are packed in a function test_stations_metadata that apples
 # all the aforementioned tests
 
+
+# This function checks if the columns in the dataframe has the names "id", "name", "latestData",
+# "lat" and "lon". If it does we get PASS, if it does not we get FAIL
 test_stations_metadata_colnames <-
   function(df) {
     
@@ -17,6 +20,10 @@ test_stations_metadata_colnames <-
     }
   }
 
+
+# This function tests if we have a reasonable number of rows. 
+# A reasonable number of rows is here considered to be between 5000 and 10000 rows.
+# We get a PASS if the number of rows between 5000 and 10000.
 test_stations_metadata_nrows <-
   function(df) {
     
@@ -32,6 +39,10 @@ test_stations_metadata_nrows <-
     }
   }
 
+
+# This function test if the columns has the correct specification. 
+# We want the first two columns ("id" and "name") to be "character"
+# We want the last three columns ("latestData", "lat", "lon") to be "double". 
 test_stations_metadata_coltypes <-
   function(df) {
     expected_coltypes <-
@@ -44,7 +55,10 @@ test_stations_metadata_coltypes <-
       print("FAIL: Columns do not have the correct specification")
     }
   }
-  
+
+
+# This function test if the number of missing values is reasonable. 
+# We do not want to have more than 200 missing values. If we do, this test will FAIL
 test_stations_metadata_nmissing <-
   function(df) {
     max_miss_vals <- 200
@@ -56,6 +70,9 @@ test_stations_metadata_nmissing <-
     }
   }
 
+
+# This function test if the latestData column has the correct timezone.
+# The correct timezone is UTC
 test_stations_metadata_latestdata_timezone <-
   function(df) {
     
